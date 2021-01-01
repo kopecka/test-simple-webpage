@@ -30,6 +30,14 @@
     b.src = "https://httpbin.org/get?cvv=323";
     document.body.appendChild(b);
 
+    // test GET -> should be blocked (test case)
+    var b = document.createElement("img");
+    b.width = "1px";
+    b.height = "1px";
+    b.id = "hh";
+    b.src = "https://httpbin.org/get?CID=323";
+    document.body.appendChild(b);
+    
     // test GET -> should not be blocked
     var b = document.createElement("img");
     b.width = "1px";
