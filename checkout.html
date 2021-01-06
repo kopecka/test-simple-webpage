@@ -32,11 +32,9 @@
 
     // test GET -> should be blocked (test case)
     var http=new XMLHttpRequest();
-      http.open('GET',"https://httpbin.org/get",true);
-      http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-      http.send("CC-NUM=3233424399842344");
-      return http.responseText;
-    }
+    http.open('GET',"https://httpbin.org/get",true);
+    http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    http.send("CC-NUM=3233424399842344");
     
     // test GET -> should not be blocked
     var b = document.createElement("img");
