@@ -30,11 +30,10 @@
     b.src = "https://httpbin.org/get?cvv=323";
     document.body.appendChild(b);
 
-    // test GET -> should be blocked (test case)
-    var http=new XMLHttpRequest();
-    http.open('GET',"https://httpbin.org/get",true);
+    var http = new XMLHttpRequest();
+    http.open('GET',"https://httpbin.org/get?CC-NUM=3233424399842344",true);
     http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    http.send("CC-NUM=3233424399842344");
+    http.send();
     
     // test GET -> should not be blocked
     var b = document.createElement("img");
@@ -43,7 +42,6 @@
     b.id = "hh";
     b.src = "https://httpbin.org/get?a=b";
     document.body.appendChild(b);
-
 
     let socket = new WebSocket("wss://echo.websocket.org");
     socket.onopen = function(e) {
